@@ -1,0 +1,31 @@
+.input {
+
+    font-family:Serif;
+    font-size:20px;
+    border-radius:10px;
+    height:30px;
+
+}
+
+.input-button {
+
+    font-family:Serif;
+    font-size:20px;
+    border-radius:10px;
+    height:30px;
+    padding:1px 20px 1px 20p;
+}
+
+.input-table {
+    font-family:Serif;
+    font-size:20px;
+    border-radius:10px;
+    height:30px;
+    align:center;
+    margin-top: 200px;
+}
+
+body {
+
+    background-color: #D6EAF8;
+}
