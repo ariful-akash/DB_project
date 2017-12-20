@@ -23,45 +23,76 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <link rel="stylesheet" href="style/style.css">
     </head>
     <body>
-        <form  method="post">
-            <table border="1" class="input-table" cellspacing="10" align="center">
+        <div style="display: inline">
 
-                <tr>
-                    <td>Name</td>
-                    <td><input class="input" type="text" name="name"></td>
-                    <td>Phone</td>
-                    <td><input class="input" type="text" name="phone"></td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td ><input class="input" type="email" name="email" ></td>
-                </tr>
+        </div>
+        <div style="display: inline">
+            <form  method="post" style="display: inline">
+                <table cellspacing="0" border="1" style="display: inline; margin-top: 5%" class="input-table-passenger" align="right">
+                    <thead>
+                        <tr class="input-table-passenger" style="background-color: beige">
+                            <th>Serial</th>
+                            <th style="width: 60%">Seat#</th>
+                            <th style="width: 40%">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="input-table-passenger">
+                            <td align="right">1</td>
+                            <td align="right">A3</td>
+                            <td align="right">450</td>
+                        </tr>
 
-                <tr>
-                    <td>Gender</td>
-                    <td><input class="input" type="text" name="gender" list="gender"></td>
-                <datalist id="gender">
-                    <option value="Male">
-                    <option value="Female">
-                    <option value="Others">
-                </datalist>
+                        <tr class="input-table-passenger" style="background-color: beige">
+                            <th align="right">Total</th>
+                            <th align="right"></th>
+                            <th align="right">450</th>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
 
-                <td>Age</td>
-                <td><input class="input" type="text" name="age"></td>
-                </tr>
+                <table border="1" class="input-table-passenger" cellspacing="10" align="right" style="display: inline">
+                    <tr>
 
-                <tr>
-                    <td>Address</td>
-                    <td ><input class="input" type="text" name="address"></td>
-                </tr>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td><input class="input" type="text" name="name"></td>
+                        <td>Phone</td>
+                        <td><input class="input" type="number" name="phone"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td ><input class="input" type="email" name="email" ></td>
+                    </tr>
+
+                    <tr>
+                        <td>Gender</td>
+                        <td><input class="input" type="text" name="gender" list="gender"></td>
+                    <datalist id="gender">
+                        <option value="Male">
+                        <option value="Female">
+                        <option value="Others">
+                    </datalist>
+
+                    <td>Age</td>
+                    <td><input class="input" type="number" name="age"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Address</td>
+                        <td ><input class="input" type="text" name="address"></td>
+                    </tr>
 
 
-                <tr>
-                    <td align="center" colspan="4"><input class="input-button" type="submit" value="submit"></td>
-                </tr>
+                    <tr>
+                        <td align="center" colspan="4"><input class="input-button" type="submit" value="submit"></td>
+                    </tr>
 
-            </table>
-        </form>
+                </table>
+            </form>
+        </div>
 
     </body>
 </html>

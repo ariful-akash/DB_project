@@ -25,6 +25,13 @@
     margin-top: 200px;
 }
 
+.input-table-passenger {
+    font-family:Serif;
+    font-size:20px;
+    padding: 10px 10px 10px 20px;
+    width: 50%;
+}
+
 body {
 
     background-color: #D6EAF8;
