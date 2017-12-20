@@ -1,19 +1,32 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//   	$n=$_POST["name"];
-//   	$r=$_POST["reg_no"];
-//	$e=$_POST["coach"];
-//   	$ad=$_POST["departing_date"];
-//	$g=$_POST["time"];
-//	$a=$_POST["from"];
-//	$a=$_POST["to"];
-//	$a=$_POST["from"];
+    $n = $_POST["name"];
+    $r = $_POST["reg_no"];
+    $ct = $_POST["coach"];
+    $dd = $_POST["dep_date"];
+    $t = $_POST["time"];
+    $f = $_POST["from"];
+    $to = $_POST["to"];
 
     $con = new mysqli('localhost', 'root', '', 'busticketreservation');
-    //host       ^username ^database name
-//   $sql="insert into passenger(name,gender,phone_no,email,address,age) values('$n','$g',
-//          '$p','$e','$ad','$a')";
-//     $result=$con->query($sql);
+    //                     host       ^username ^database name
+    //                     
+    $sql = "SELECT r_id FROM route WHERE starting_place = '$f' AND destination = '$to'";
+    $result = $con->query($sql);
+    if ($result->num_rows == 0) {
+
+        $r_ins = "insert into route(starting_place,destination) values ('$f','$to')";
+        $result2 = $con->query($r_ins);
+    }
+
+
+    $sql = "SELECT r_id FROM route WHERE starting_place = '$f' AND destination = '$to'";
+    $result = $con->query($sql);
+    $row = $result->fetch_assoc();
+    $a = $row['r_id'];
+    $sql1 = "insert into bus(b_name,reg_no,coach_type,departing_time,dep_date,r_id) values('$n','$r',
+          '$ct','$t','$dd',$a)";
+    $result1 = $con->query($sql1);
 }
 ?>
 
@@ -31,43 +44,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <tr>
                     <td>Bus Name:</td>
-                    <td><input class="input" type="text" name="name"></td>
+                    <td><input id="name" class="input" type="text" name="name"></td>
                 </tr>
 
                 <tr>
                     <td>Registration no:</td>
-                    <td><input class="input" type="text" name="reg_no"></td>
+                    <td><input id="reg_no" class="input" type="text" name="reg_no"></td>
                 </tr>
 
                 <tr>
-                    <td>Coach</td>
-                    <td><input class="input" type="text" name="coach"></td>
+                    <td>Coach:</td>
+                    <td><input id="coach" class="input" type="text" name="coach"></td>
                 </tr>
 
                 <tr>
-                    <td>Departing date</td>
-                    <td><input class="input" type="date" name="departing_date"></td>
+                    <td>Departing date:</td>
+                    <td><input id="dep_date" class="input" type="date" name="dep_date"></td>
                 </tr>
 
                 <tr>
-                    <td>Time</td>
-                    <td><input class="input" type="time" name="time"></td>
+                    <td>Time:</td>
+                    <td><input id="time" class="input" type="time" name="time"></td>
                 </tr>
 
                 <tr>
-                    <td>Starting from</td>
-                    <td><input class="input" type="text" name="from"></td>
+                    <td>Starting from:</td>
+                    <td><input id="starting" class="input" type="text" name="from"></td>
                 </tr>
 
                 <tr>
-                    <td>Destinaton</td>
-                    <td><input class="input" type="text" name="to"></td>
+                    <td>Destinaton:</td>
+                    <td><input id="dest" class="input" type="text" name="to"></td>
                 </tr>
 
-                <tr>
-                    <td>Counter</td>
-                    <td><input class="input" type="text" name="counter"></td>
-                </tr>
 
                 <tr>
                     <td></td>

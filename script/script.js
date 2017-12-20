@@ -24,3 +24,8 @@ var searchValidator = function () {
 };
 
 
+var adminbusinput = function () {
+
+};
+
+
