@@ -25,7 +25,6 @@ $res = $con->query($sql);
                 <th>STARTING COUNTER</th>
                 <th>END COUNTER</th>
                 <th>COACH TYPE</th>
-                <th>ARRIVAL TIME</th>
                 <th>VIEW</th>
 
             </tr>
@@ -33,34 +32,19 @@ $res = $con->query($sql);
             <tr>
                 <?php
                 while ($row = $res->fetch_assoc()) {
+                    $id = $row['b_id'];
                     $coach = $row['coach_type'];
                     $name = $row['b_name'];
                     $d_time = $row['departing_time'];
                     $start_p = $row['starting_place'];
                     $end = $row['destination'];
-                    $time = $d_time + 11;
                     ?>
-                    <td><?php
-                        if ($name == "deshtravels")
-                            echo 'DESH TRAVELS';
-                        elseif ($name == "nationaltravels") {
-                            echo 'NATIONAL TRAVELS';
-                        } elseif ($name == "shyamoli") {
-                            echo 'SHYAMOLI PARIBAHAN';
-                        }
-                        ?></td>
+                    <td><?php echo strtoupper($name) ?></td>
                     <td><?php echo $d_time; ?></td>
-                    <td><?php echo $start_p; ?></td>
-                    <td><?php echo $end; ?></td>
-                    <td><?php
-                        if ($coach == "ac") {
-                            echo 'AC';
-                        } elseif ($coach == "nonac") {
-                            echo 'Non-Ac';
-                        }
-                        ?></td>
-                    <td><?php echo "$time:00:00 "; ?></td>
-                    <td><a href="#">View Seats</a></td>
+                    <td><?php echo strtoupper($start_p) ?></td>
+                    <td><?php echo strtoupper($end) ?></td>
+                    <td><?php echo strtoupper($coach) ?></td>
+                    <td><a href="passenger_info.php?bus_id=<?= $id ?>">View Seats</a></td>
                 </tr>
             <?php } ?>  
         </table>
