@@ -1,17 +1,19 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $n = $_POST["name"];
-    $p = $_POST["phone"];
-    $e = $_POST["email"];
-    $ad = $_POST["address"];
-    $g = $_POST["gender"];
-    $a = $_POST["age"];
-
-    $con = new mysqli('localhost', 'root', '', 'busticketreservation');
-    //host       ^username ^database name
-    $sql = "insert into passenger(name,gender,phone_no,email,address,age) values('$n','$g',
-          '$p','$e','$ad','$a')";
-    $result = $con->query($sql);
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $id = $_GET['bus_id'];
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //    $n = $_POST["name"];
+//    $p = $_POST["phone"];
+//    $e = $_POST["email"];
+//    $ad = $_POST["address"];
+//    $g = $_POST["gender"];
+//    $a = $_POST["age"];
+//
+//    $con = new mysqli('localhost', 'root', '', 'busticketreservation');
+//    //host       ^username ^database name
+//    $sql = "insert into passenger(name,gender,phone_no,email,address,age) values('$n','$g',
+//          '$p','$e','$ad','$a')";
+//    $result = $con->query($sql);
 }
 ?>
 
@@ -24,10 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
     <body>
         <div style="display: inline">
+            <input type="button" value="A1" name="A1" />
+            <input type="button" value="A2" name="A2" />
+            <input type="button" value="A3" name="A3" />
 
         </div>
         <div style="display: inline">
-            <form  method="post" style="display: inline">
+            <form  method="GET" style="display: inline">
                 <table cellspacing="0" border="1" style="display: inline; margin-top: 5%" class="input-table-passenger" align="right">
                     <thead>
                         <tr class="input-table-passenger" style="background-color: beige">
