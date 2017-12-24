@@ -1,0 +1,48 @@
+.input {
+
+    font-family:Serif;
+    font-size:20px;
+    border-radius:10px;
+    height:30px;
+
+}
+
+.input-button1 {
+    font-family:Serif;
+    font-size:15px;
+    height:40px;
+    padding:10px 30px 10px 30p;
+}
+
+.input-button {
+    font-family:Serif;
+    font-size:20px;
+    border-radius:10px;
+    height:30px;
+    padding:1px 20px 1px 20p;
+    background-color: brown;
+}
+
+.input-table {
+    font-family:Serif;
+    font-size:20px;
+    border-radius:10px;
+    height:30px;
+    align:center;
+    margin-top: 200px;
+}
+
+.input-table-passenger {
+    font-family:Serif;
+    font-size:20px;
+    padding: 10px 10px 10px 20px;
+    width: 50%;
+}
+body {
+
+    background-color: #D6EAF8;
+}
+
+
+
+
