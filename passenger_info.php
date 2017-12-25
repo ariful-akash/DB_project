@@ -1,7 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $id = $_GET['bus_id'];
-} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
     //    $n = $_POST["name"];
 //    $p = $_POST["phone"];
 //    $e = $_POST["email"];
@@ -9,11 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 //    $g = $_POST["gender"];
 //    $a = $_POST["age"];
 //
-//    $con = new mysqli('localhost', 'root', '', 'busticketreservation');
-//    //host       ^username ^database name
-//    $sql = "insert into passenger(name,gender,phone_no,email,address,age) values('$n','$g',
-//          '$p','$e','$ad','$a')";
-//    $result = $con->query($sql);
+    $con = new mysqli('localhost', 'root', '', 'busticketreservation');
+    //                  host       ^username ^database name
+    $sql = "SELECT * FROM seat where seat.b_id = $id";
+    $result = $con->query($sql);
 }
 ?>
 
@@ -23,17 +21,53 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <meta charset="utf-8">
         <title> Passenger Information</title>
         <link rel="stylesheet" href="style/style.css">
+        <script src="script/seatScript.js" type="text/javascript"></script>
     </head>
     <body>
-        <div style="display: inline">
-            <input type="button" value="A1" name="A1" />
-            <input type="button" value="A2" name="A2" />
-            <input type="button" value="A3" name="A3" />
 
+        <div style="display: inline;">
+            <table border="0" cellspacing="10" cellpadding="5" style="display: inline;">
+                <?php
+                while ($raw = $result->fetch_assoc()) {
+                    $sno = $raw['seat_no'];
+                    $b = $raw['book'];
+                    $f = $raw['fare'];
+                    ?>
+                    <tr>
+                        <td><input <?php if ($b == 0) { ?>onclick="calculateCost(this.value,<?= $b ?>,<?= $f ?>)<?php } ?>" style="font-size: 20px; width: 70px; height: 40px; border-radius: 5px; <?php if ($b == 0) { ?>background-color: #fff;<?php } else { ?>background-color: #ccc;<?php } ?>" type="button" id="<?= $sno ?>" value="<?= $sno ?>"/></td>
+                        <?php
+                        $raw = $result->fetch_assoc();
+                        $sno = $raw['seat_no'];
+                        $b = $raw['book'];
+                        $f = $raw['fare'];
+                        ?>
+                        <td><input <?php if ($b == 0) { ?>onclick="calculateCost(this.value,<?= $b ?>,<?= $f ?>)<?php } ?>" style="font-size: 20px; width: 70px; height: 40px; border-radius: 5px; <?php if ($b == 0) { ?>background-color: #fff;<?php } else { ?>background-color: #ccc;<?php } ?>" type="button" id="<?= $sno ?>" value="<?= $sno ?>"/></td>
+                        <td></td>
+                        <?php
+                        $raw = $result->fetch_assoc();
+                        $sno = $raw['seat_no'];
+                        $b = $raw['book'];
+                        $f = $raw['fare'];
+                        ?>
+                        <td><input <?php if ($b == 0) { ?>onclick="calculateCost(this.value,<?= $b ?>,<?= $f ?>)<?php } ?>" style="font-size: 20px; width: 70px; height: 40px; border-radius: 5px; <?php if ($b == 0) { ?>background-color: #fff;<?php } else { ?>background-color: #ccc;<?php } ?>" type="button" id="<?= $sno ?>" value="<?= $sno ?>"/></td>
+                        <?php
+                        $raw = $result->fetch_assoc();
+                        $sno = $raw['seat_no'];
+                        $b = $raw['book'];
+                        $f = $raw['fare'];
+                        ?>
+                        <td><input <?php if ($b == 0) { ?>onclick="calculateCost(this.value,<?= $b ?>,<?= $f ?>)<?php } ?>" style="font-size: 20px; width: 70px; height: 40px; border-radius: 5px; <?php if ($b == 0) { ?>background-color: #fff;<?php } else { ?>background-color: #ccc;<?php } ?>" type="button" id="<?= $sno ?>" value="<?= $sno ?>"/></td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </table>
         </div>
+
+
         <div style="display: inline">
             <form  method="GET" style="display: inline">
-                <table cellspacing="0" border="1" style="display: inline; margin-top: 5%" class="input-table-passenger" align="right">
+                <table id="costtable" cellspacing="0" border="1" style="display: inline; margin-top: 5%" class="input-table-passenger" align="right">
                     <thead>
                         <tr class="input-table-passenger" style="background-color: beige">
                             <th>Serial</th>
@@ -41,17 +75,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                             <th style="width: 40%">Cost</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="input-table-passenger">
+                    <tbody id="costlist">
+<!--                        <tr class="input-table-passenger">
                             <td align="right">1</td>
                             <td align="right">A3</td>
                             <td align="right">450</td>
-                        </tr>
+                        </tr>-->
 
-                        <tr class="input-table-passenger" style="background-color: beige">
-                            <th align="right">Total</th>
-                            <th align="right"></th>
-                            <th align="right">450</th>
+                        <tr id="totalcostRow" class="input-table-passenger" style="background-color: beige">
+                            <td align="right">Total</td>
+                            <td align="right"></td>
+                            <td id="totalcost">0</td>
                         </tr>
                     </tbody>
                 </table>

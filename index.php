@@ -2,22 +2,17 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
-    echo date("D M d, Y G:i a");
     $_SESSION['start'] = $start;
     $_SESSION['dest'] = $dest;
     $_SESSION['date'] = $date;
     $_SESSION['type'] = $type;
-
-
-    $con = new mysqli('localhost', 'root', '', 'busticketreservation');
-    //host       ^username ^database name
 }
 ?>
 <html>
     <head>
         <meta charset="utf-8">
         <title>Index</title>
-        <link rel="stylesheet" href="style/style.css">
+        <link href="style/style2.css" rel="stylesheet" type="text/css"/>
         <script src="script/script.js" type="text/javascript"></script>
     </head>
     <body>
@@ -67,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <tr>
                     <td></td>
-                    <td colspan="4"><input   class="input-button"  type="submit" value="Search" onclick="return searchValidator()"></td>
+                    <td colspan="4"><input class="input-button"  type="submit" value="Search" onclick="return searchValidator()"></td>
                 </tr>
 
             </table>
