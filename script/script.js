@@ -26,6 +26,22 @@ var searchValidator = function () {
 
 var adminbusinput = function () {
 
+    var name = document.getElementById("name").value;
+    var reg_no = document.getElementById("reg_no").value;
+    var coach = document.getElementById("coach").value;
+    var dep_date = document.getElementById("dep_date").value;
+    var time = document.getElementById("time").value;
+    var starting = document.getElementById("starting").value;
+    var dest = document.getElementById("dest").value;
+
+    var flag = false;
+    if (name !== "" && reg_no !== "" && coach !== "" && dep_date !== "" && time !== "" && starting !== "" && dest !== "")
+    {
+        flag = true;
+    }
+
+    return flag;
+
 };
 
 

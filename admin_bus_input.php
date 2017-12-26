@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <meta charset="utf-8">
         <title> Admin Bus Input </title>
         <link rel="stylesheet" href="style/style.css">
+        <script src="script/script.js" type="text/javascript"></script>
     </head>
     <body >
         <form  method="post">
@@ -80,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <tr>
                     <td></td>
-                    <td><input class="input-button" type="submit" value="Submit"></td>
+                    <td><input class="input-button" type="submit" value="Submit" onclick="return adminbusinput()"></td>
                 </tr>
 
             </table>
